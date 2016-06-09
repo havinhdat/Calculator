@@ -7,8 +7,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
+
+    private enum Operator {ADD, SUB, MUL, DIV}
 
     private TextView tvResult;
     private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0,
@@ -125,6 +130,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnRes:
                 delSingle = false;
                 btnDel.setText("C");
+
+                calResult();
                 break;
         }
 
@@ -138,12 +145,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private double calResult() {
         double result = 0;
 
+        List<Operator> operators = new ArrayList<Operator>();
+        List<Double> nums = new ArrayList<Double>();
+        int start, end;
+        start = 0;
+        for (int i = 0; i < calculation.length(); i++) {
+            if (isOperator(calculation.charAt(i)) || i == calculation.length() - 1) {
+                end = i;
+                if (end == calculation.length() - 1 && !isOperator(calculation.charAt(i))) end++;
+                switch (calculation.charAt(i)) {
+                    case '+':
+                        operators.add(Operator.ADD);
+                        break;
+                    case '-':
+                        operators.add(Operator.SUB);
+                        break;
+                    case 'x':
+                        operators.add(Operator.MUL);
+                        break;
+                    case '÷':
+                        operators.add(Operator.DIV);
+                        break;
+                }
+
+                try {
+                    nums.add(Double.parseDouble(calculation.substring(start, end)));
+                    start = end + 1;
+
+                } catch (Exception ex) {
+                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        if (isOperator(calculation.charAt(calculation.length() - 1))) {
+            operators.remove(operators.size()-1);
+        }
+
         return result;
     }
 
-    private boolean hasDot(){
+    private boolean hasDot() {
         for (int i = calculation.length() - 1; i >= 0; i--) {
-            if (calculation.charAt(i) == '.'){
+            if (calculation.charAt(i) == '.') {
                 return true;
             }
 
