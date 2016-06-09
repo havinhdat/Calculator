@@ -1,3 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="60469afb75a326ee26e977cdbf9202dd3bd75ad5">
+        <dex dex="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_964700b12602cb6b58e7ed6febc538861bc6acb0\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.3.0_27af109b2bc22b6ebe713b5d3958a8ce9fee969d\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.3.0_39da008b852cebff5d0078aa829161720421f367\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.3.0_2ea0a15dff38fcbeb593f29ccc8175033a7f8255\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="91ae948e5c10c7fc7cf629ea29ec9a7c1a5adf21">
+        <dex dex="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_36aa36273107193d38da98ea17ba7fdb25199044\classes.dex" />
+    </item>
+    <item
+        jar="D:\working-tools\Android SDK\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_3b1170302ef4fbfe1e5d9aaa37633ee4d445312e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.3.0_aede59b704f2fea424d67771037eb1d9a7ee972a\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\VINHDAT\Documents\GitHub\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.3.0_941db65b787d4c4f90f63f820dfff0efb8d6c63e\classes.dex" />
+    </item>
+
+</items>
