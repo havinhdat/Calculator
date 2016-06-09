@@ -24,9 +24,17 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a1353008_1353049/calculator/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.8530466">
-              <caret line="82" column="27" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
-              <folding />
+            <state vertical-scroll-proportion="0.6344086">
+              <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+              <folding>
+                <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#initializeComponents#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onClick#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#isOperator#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#calResult#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#hasDot#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onLongClick#0;class#MainActivity#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1889,7 +1897,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1931,9 +1939,17 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a1353008_1353049/calculator/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8530466">
-          <caret line="82" column="27" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
-          <folding />
+        <state vertical-scroll-proportion="0.6344086">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding>
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#initializeComponents#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onClick#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#isOperator#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#calResult#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#hasDot#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onLongClick#0;class#MainActivity#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
