@@ -150,6 +150,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
 
+        if (!delSingle){
+            if (v.getId() != R.id.btnDelete && v.getId() != R.id.btnRes){
+                delSingle = true;
+                btnDel.setText("<=");
+            }
+        }
         tvResult.setText(calculation);
         horizontalScrollView.postDelayed(new Runnable() {
             @Override
