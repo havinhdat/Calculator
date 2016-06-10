@@ -1,3 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="F:\Courses\Calculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="F:\Courses\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.3.0_36fdd1807b9e1c90ef9732318390a31fd9da0ca3\classes.dex" />
+    </item>
+    <item
+        jar="F:\Courses\Calculator\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ffe0d784a7c3035fef66ab6d525ae3995595fd0c">
+        <dex dex="F:\Courses\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_e4aaad362e61939cb7316a3c8c96f394ebea2453\classes.dex" />
+    </item>
+    <item
+        jar="F:\Courses\Calculator\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="541eebe3ce18771f12cf0fa9abf13190519f5383">
+        <dex dex="F:\Courses\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_c6beee0c72d0531100dbfaacc92978ec163c21d9\classes.dex" />
+    </item>
+    <item
+        jar="F:\Courses\Calculator\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="F:\Courses\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.3.0_71b0fc075dd8a3759d51c622a7a952942fb1163d\classes.dex" />
+    </item>
+    <item
+        jar="E:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="F:\Courses\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_98fe2915d7f889fbf7ea276fc69ff0a84f6bb24f\classes.dex" />
+    </item>
+    <item
+        jar="F:\Courses\Calculator\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="F:\Courses\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.3.0_d73c30b8eef4cdb6ca84bc14d53458c1dc93c494\classes.dex" />
+    </item>
+    <item
+        jar="F:\Courses\Calculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="F:\Courses\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.3.0_cc9ff1409e4d0eb1b600233356b34487aa2fe885\classes.dex" />
+    </item>
+    <item
+        jar="F:\Courses\Calculator\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="F:\Courses\Calculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.3.0_7e0fac27bceb374f1579631e41ab61dab2cacd27\classes.dex" />
+    </item>
+
+</items>
