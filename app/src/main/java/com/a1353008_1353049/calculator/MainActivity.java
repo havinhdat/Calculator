@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvResult;
     private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0,
             btnPlus, btnMinus, btnMul, btnDiv, btnDot, btnDel, btnRes;
+    private HorizontalScrollView horizontalScrollView;
     private boolean delSingle = true;
     private String calculation = "";
 
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initializeComponents();
+
     }
 
     protected void initializeComponents() {
@@ -68,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnDel.setOnLongClickListener(this);
 
+        horizontalScrollView = (HorizontalScrollView)findViewById(R.id.hScroll);
+
         btnDel.setText("<=");
     }
 
@@ -92,8 +97,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn9:
                 calculation += button.getText().toString();
                 break;
-            case R.id.btnPlus:
             case R.id.btnMinus:
+                if (calculation.length() > 0 && calculation.charAt(calculation.length() - 1) == '-') {
+                    break;
+                }
+                if (calculation.length() > 0 && calculation.charAt(calculation.length() - 1) == '+') {
+                    calculation = calculation.substring(0, calculation.length() - 1);
+                }
+                calculation += button.getText().toString();
+                break;
+            case R.id.btnPlus:
             case R.id.btnMultiply:
             case R.id.btnDivide:
                 if (calculation.length() == 0) {
@@ -102,6 +115,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (calculation.length() > 0 && isOperator(calculation.charAt(calculation.length() - 1))) {
                     calculation = calculation.substring(0, calculation.length() - 1);
+                    if (isOperator(calculation.charAt(calculation.length() - 1)))
+                        calculation = calculation.substring(0, calculation.length() - 1);
                 }
                 calculation += button.getText().toString();
                 break;
@@ -112,17 +127,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     else {
                         calculation = "";
                         delSingle = true;
+                        btnDel.setText("<=");
                     }
                 } catch (Exception e) {
                     Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btnDot:
-                if (!((calculation.length() > 0 && calculation.charAt(calculation.length() - 1) == '.') ||
-                        calculation.length() == 0 ||
-                        (calculation.length() > 0 && isOperator(calculation.charAt(calculation.length() - 1)))
-
-                )) {
+                if ((calculation.length() > 0 && isOperator(calculation.charAt(calculation.length() - 1))) ||
+                        calculation.length() == 0) {
+                    calculation += "0.";
+                } else if (!((calculation.length() > 0 && calculation.charAt(calculation.length() - 1) == '.'))) {
                     if (!hasDot())
                         calculation += button.getText().toString();
                 }
@@ -131,11 +146,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 delSingle = false;
                 btnDel.setText("C");
 
-                calResult();
+                calculation = prettyPrint(calResult());
                 break;
         }
 
         tvResult.setText(calculation);
+        horizontalScrollView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                horizontalScrollView.fullScroll(View.FOCUS_RIGHT);
+            }
+        }, 10);
+    }
+
+    public static String prettyPrint(double d) {
+        int i = (int) d;
+        return d == i ? String.valueOf(i) : String.valueOf(d);
     }
 
     private boolean isOperator(Character c) {
@@ -143,9 +169,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private double calResult() {
-        double result = 0;
+        double result = 0.0;
 
-        List<Operator> operators = new ArrayList<Operator>();
+        /*List<Operator> operators = new ArrayList<Operator>();
         List<Double> nums = new ArrayList<Double>();
         int start, end;
         start = 0;
@@ -179,8 +205,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if (isOperator(calculation.charAt(calculation.length() - 1))) {
-            operators.remove(operators.size()-1);
+            operators.remove(operators.size() - 1);
         }
+*/
+        //handle the calculation
+
 
         return result;
     }
