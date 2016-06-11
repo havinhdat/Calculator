@@ -395,9 +395,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return result ;
     }
 
+    /**
+     * calculate string expression
+     *
+     * @return
+     */
     private double calResult() {
         double result = 0.0;
         //handle the calculation
+
+        // if expression is empty
+        if (calculation.equals(""))
+            return result;
 
         // convert infix expression to postfix
         List<OP> postfix = infix2postfix(makeup(calculation));
