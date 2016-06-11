@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (calculation.length() > 0 && isOperator(calculation.charAt(calculation.length() - 1))) {
                     calculation = calculation.substring(0, calculation.length() - 1);
-                    if (isOperator(calculation.charAt(calculation.length() - 1)))
+                    if (calculation.length() > 0 && isOperator(calculation.charAt(calculation.length() - 1)))
                         calculation = calculation.substring(0, calculation.length() - 1);
                 }
                 calculation += button.getText().toString();
@@ -174,48 +175,244 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return (c.equals('+') || c.equals('-') || c.equals('x') || c.equals('÷'));
     }
 
-    private double calResult() {
-        double result = 0.0;
+    private boolean isDot(Character c){
+        return c.equals('.');
+    }
 
-        /*List<Operator> operators = new ArrayList<Operator>();
-        List<Double> nums = new ArrayList<Double>();
-        int start, end;
-        start = 0;
-        for (int i = 0; i < calculation.length(); i++) {
-            if (isOperator(calculation.charAt(i)) || i == calculation.length() - 1) {
-                end = i;
-                if (end == calculation.length() - 1 && !isOperator(calculation.charAt(i))) end++;
-                switch (calculation.charAt(i)) {
-                    case '+':
-                        operators.add(Operator.ADD);
+    private boolean isMinusSign(Character c){
+        return c.equals('-');
+    }
+
+    private int getPriority(Character c){
+        int priority = 0;
+        switch (c){
+            case '-':
+            case '+':
+                priority = 0;
+                break;
+            case '÷':
+            case 'x':
+                priority = 1;
+                break;
+        }
+        return priority;
+    }
+
+    protected class OP{
+        public String data = "";
+        public boolean isOperator = false;
+    }
+
+    /**
+     * delete redundant operator
+     *
+     * @param expression
+     * @return
+     */
+    public String makeup(String expression){
+        String prettyExpression;
+
+        int index = expression.length() - 1;
+
+        while (index >= 0){
+            if (!isOperator(expression.charAt(index))){
+                break;
+            }
+            index--;
+        }
+
+        prettyExpression = expression.substring(0, index + 1);
+
+        return prettyExpression;
+    }
+
+    /**
+     * transform infix expression to postfix using Polish notation
+     *
+     * @param expression
+     * @return
+     */
+    public List<OP> infix2postfix(String expression)
+    {
+        List<OP> output = new ArrayList<OP>();
+
+        int expression_length = expression.length();
+        Stack<OP> opStack = new Stack<OP>();
+
+        int index = 0;
+
+        Character cur;
+
+        while (index<expression_length)
+        {
+            cur = expression.charAt(index);
+
+            // current character is operator or not
+            if (isOperator(cur)){
+                //current character is minus sign of negative number or not
+                if(isMinusSign(cur) && (index == 0 || isOperator(expression.charAt(index-1)))){
+                    // current character IS minus sign of negative number
+                    OP number = new OP();
+
+                    // add minus sign to number
+                    number.data += '-';
+
+                    // set OP flag that OP is not a operator
+                    number.isOperator = false;
+
+                    index++;
+
+                    // get rest numeric
+                    for(;index < expression_length; index++){
+                        // character is operator -> end of number
+                        if (isOperator(expression.charAt(index))){
+                            break;
+                        }
+                        number.data += expression.charAt(index);
+                    }
+
+                    // add number to output
+                    output.add(number);
+
+                }
+                //current character is NOT minus sign of negative number
+                else{
+                    OP operator = new OP();
+
+                    // add character sign to operator
+                    operator.data += expression.charAt(index);
+
+                    // set OP flag that OP is a operator
+                    operator.isOperator = true;
+
+                    index++;
+
+                    //put operator to empty stack
+                    if (opStack.isEmpty()){
+                        opStack.push(operator);
+                    }
+                    else{
+                        // stack not empty
+                        // pop an operator and compare priority
+                        OP in_stack = opStack.pop();
+
+                        if (getPriority(in_stack.data.charAt(0)) >= getPriority(operator.data.charAt(0))){
+                            output.add(in_stack);
+                            opStack.push(operator);
+                        }
+                        else {
+                            opStack.push(in_stack);
+                            opStack.push(operator);
+                        }
+                    }
+                }
+            }
+            else{
+                // current character is numeric
+                OP number = new OP();
+
+                // set OP flag that OP is not a operator
+                number.isOperator = false;
+
+                // get whole numeric
+                for(;index < expression_length; index++){
+                    // character is operator -> end of number
+                    if (isOperator(expression.charAt(index))){
                         break;
-                    case '-':
-                        operators.add(Operator.SUB);
-                        break;
-                    case 'x':
-                        operators.add(Operator.MUL);
-                        break;
-                    case '÷':
-                        operators.add(Operator.DIV);
-                        break;
+                    }
+                    number.data += expression.charAt(index);
                 }
 
-                try {
-                    nums.add(Double.parseDouble(calculation.substring(start, end)));
-                    start = end + 1;
-
-                } catch (Exception ex) {
-                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                // add number to output
+                output.add(number);
             }
         }
 
-        if (isOperator(calculation.charAt(calculation.length() - 1))) {
-            operators.remove(operators.size() - 1);
+        // put rest of stack to output
+        while (!opStack.isEmpty()){
+            output.add(opStack.pop());
         }
-*/
+
+        return output;
+    }
+
+    /**
+     *  evaluation of postfix expression
+     *
+     * @param postfix
+     * @return
+     */
+    public double evaluate(List<OP> postfix){
+        double result;
+
+        Stack<OP> opStack = new Stack<OP>();
+
+        int postfix_length = postfix.size();
+
+        OP current;
+
+        for(int i = 0; i < postfix_length; i++){
+
+            current = postfix.get(i);
+
+            if (!current.isOperator)
+            {
+                opStack.push(current);
+            }
+            else {
+
+                // get 2 operand
+
+                OP operand1 = opStack.pop();
+                OP operand2 = opStack.pop();
+
+                // calculation
+                OP res = new OP();
+
+                res.isOperator = false;
+
+                switch (current.data.charAt(0)){
+                    case '-':
+                        res.data = String.valueOf(Double.parseDouble(operand2.data) - Double.parseDouble(operand1.data));
+                        break;
+                    case '+':
+                        res.data = String.valueOf(Double.parseDouble(operand2.data) + Double.parseDouble(operand1.data));
+                        break;
+                    case '÷':
+                        res.data = String.valueOf(Double.parseDouble(operand2.data) / Double.parseDouble(operand1.data));
+                        break;
+                    case 'x':
+                        res.data = String.valueOf(Double.parseDouble(operand2.data) * Double.parseDouble(operand1.data));
+                        break;
+                }
+
+                opStack.push(res);
+            }
+        }
+
+        result = Double.parseDouble(opStack.peek().data);
+
+        return result ;
+    }
+
+    /**
+     * calculate string expression
+     *
+     * @return
+     */
+    private double calResult() {
+        double result = 0.0;
         //handle the calculation
 
+        // if expression is empty
+        if (calculation.equals(""))
+            return result;
+
+        // convert infix expression to postfix
+        List<OP> postfix = infix2postfix(makeup(calculation));
+
+        // evaluate postfix expression
+        result = evaluate(postfix);
 
         return result;
     }
