@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private HorizontalScrollView horizontalScrollView;
     private boolean delSingle = true;
     private String calculation = "";
+    private boolean isNaNorInf = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         Button button = (Button) v;
+        if (isNaNorInf){
+            calculation = "";
+            isNaNorInf = false;
+        }
         switch (v.getId()) {
             case R.id.btn0:
                 if (!(calculation.length() == 1 && calculation.charAt(calculation.length() - 1) == '0') ||
@@ -173,10 +178,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean isOperator(Character c) {
         return (c.equals('+') || c.equals('-') || c.equals('x') || c.equals('÷'));
-    }
-
-    private boolean isDot(Character c){
-        return c.equals('.');
     }
 
     private boolean isMinusSign(Character c){
@@ -413,6 +414,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // evaluate postfix expression
         result = evaluate(postfix);
+
+        isNaNorInf = false;
+        if (Double.isInfinite(result) || Double.isNaN(result))
+            isNaNorInf = true;
 
         return result;
     }
